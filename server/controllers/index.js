@@ -14,12 +14,12 @@ const defaultData = {
 const defaultDataDog = {
   name: 'unknown',
   breed: 'golden retriever',
-  age: 1
+  age: 1,
 };
 
 // object for us to keep track of the last Cat we made and dynamically update it sometimes
 let lastAdded = new Cat(defaultData);
-let lastAddedDog = new Dog(defaultDataDog);
+const lastAddedDog = new Dog(defaultDataDog);
 // function to handle requests to the main page
 // controller functions in Express receive the full HTTP request
 // and a pre-filled out response object to send
@@ -142,12 +142,12 @@ const hostPage2 = (req, res) => {
 // controller functions in Express receive the full HTTP request
 // and a pre-filled out response object to send
 const hostPage3 = (req, res) => {
-    // res.render takes a name of a page to render.
-    // These must be in the folder you specified as views in your main app.js file
-    // Additionally, you don't need .jade because you registered the file type
-    // in the app.js as jade. Calling res.render('index')
-    // actually calls index.jade. A second parameter of JSON can be passed
-    // into the jade to be used as variables with #{varName}
+  // res.render takes a name of a page to render.
+  // These must be in the folder you specified as views in your main app.js file
+  // Additionally, you don't need .jade because you registered the file type
+  // in the app.js as jade. Calling res.render('index')
+  // actually calls index.jade. A second parameter of JSON can be passed
+  // into the jade to be used as variables with #{varName}
   res.render('page3');
 };
 
@@ -245,7 +245,7 @@ const setDog = (req, res) => {
   const dogData = {
     name,
     breed,
-    age
+    age,
   };
 
   // create a new object of CatModel with the object to save
@@ -340,8 +340,7 @@ const searchDog = (req, res) => {
     }
 
     // if a match, send the match back
-    doc.age = doc.age + 1;
-    return res.json({ name: doc.name, breed: doc.breed, age: doc.age });
+    return res.json({ name: doc.name, breed: doc.breed, age: doc.age + 1 });
   });
 };
 
